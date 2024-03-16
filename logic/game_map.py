@@ -25,7 +25,7 @@ class GameMap:
             target_obj = self.object_map[new_x][new_y]
             if target_obj is None:
                 self.move(army, new_x, new_y)
-                field.handle_army(army)
+                field.handle_player(army.player)
             elif isinstance(target_obj, Army):
                 if army.player is target_obj.player:
                     target_obj.add(army.size)
@@ -35,7 +35,7 @@ class GameMap:
                     if army.size > enemy_army.size:
                         army.remove(enemy_army.size)
                         self.move(army, new_x, new_y)
-                        field.handle_army(army)
+                        field.handle_player(army.player)
                     elif army.size < enemy_army.size:
                         enemy_army.remove(army.size)
                         self.clear(army.x, army.y)

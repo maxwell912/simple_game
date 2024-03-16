@@ -6,9 +6,9 @@ from logic.game_objects.game_object import GameObject
 
 
 class MapDrawer:
-    def __init__(self, game_map: GameMap, image_repo: ImageRepo, screen_width: int, screen_height: int, cell_size: int, screen: Surface):
+    def __init__(self, game_map: GameMap, image_path, screen_width: int, screen_height: int, cell_size: int, screen: Surface):
         self.game_map = game_map
-        self.image_repo = image_repo
+        self.image_repo = ImageRepo(image_path, cell_size)
         self.screen_width = screen_width
         self.screen_height = screen_height
         self.cell_size = cell_size
@@ -35,4 +35,4 @@ class MapDrawer:
         self.screen.blit(obj_image, coords)
 
     def _xy_to_coords(self, x: int, y: int):
-        return x * self.x_p, self.screen_height - y * self.y_p
+        return x * self.x_p, y * self.y_p

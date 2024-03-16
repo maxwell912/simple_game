@@ -1,6 +1,9 @@
 import pygame
 from pygame.locals import *
 
+from logic.drawer.map_drawer import MapDrawer
+from logic.game_map import GameMap
+
 # Инициализация Pygame
 pygame.init()
 
@@ -8,12 +11,11 @@ pygame.init()
 screen_width = 800
 screen_height = 800
 
-# Размер клетки
-cell_size = 100
+map_width = 4
+map_height = 4
 
-# Загрузка изображения кубика
-cube_image = pygame.image.load("images/cat.png")
-cube_image = pygame.transform.scale(cube_image, (cell_size, cell_size))
+# Размер клетки
+cell_size = int(min(screen_width / map_width, screen_height / map_height))
 
 # Создание окна
 screen = pygame.display.set_mode((screen_width, screen_height))
@@ -34,6 +36,10 @@ speed = 5
 running = True
 clock = pygame.time.Clock()
 
+game_map = GameMap(map_width, map_height)
+map_drawer = MapDrawer(game_map, 'images', screen_width, screen_height, cell_size, screen)
+
+
 while running:
     # Заполнение экрана белым цветом
     screen.fill((255, 255, 255))
@@ -51,8 +57,7 @@ while running:
         else:
             player_y -= speed
 
-    # Отрисовка кубика
-    screen.blit(cube_image, (player_x, player_y))
+    map_drawer.draw()
 
     # Обновление экрана
     pygame.display.flip()
