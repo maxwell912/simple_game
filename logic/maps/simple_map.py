@@ -15,21 +15,22 @@ def reverse(field):
     return r
 
 class SimpleMap:
-    def create(player1: Player, player2: Player):
-        m = GameMap(10, 5)
+    def create(player1: Player, player2: Player, bot: Player):
+        m = GameMap(9, 5)
 
         mine1 = lambda: Mine(10, player1)
         mine2 = lambda: Mine(10, player2)
+        bot_mine = lambda: Mine(10, bot)
 
         castle1 = lambda: Castle(player1, 10, 50)
         castle2 = lambda: Castle(player2, 10, 50)
 
         field = [
-            [mine1(), forest, forest, forest, forest, forest, forest, forest, forest, mine2()],
-            [Road02, forest, forest, forest, forest, forest, forest, forest, forest, Road02],
-            [castle1(), Road13, Road13, Road13, Road13, Road13, Road13, Road13, Road13, castle2()],
-            [Road02, forest, forest, forest, forest, forest, forest, forest, forest, Road02],
-            [mine1(), forest, forest, forest, forest, forest, forest, forest, forest, mine2()],
+            [mine1(), Road13, Road13, Road13, Road123, Road13, Road13, Road13, mine2()],
+            [Road02, forest, forest, forest, Road02, forest, forest, forest, Road02],
+            [castle1(), Road13, Road13, Road13, bot_mine(), Road13, Road13, Road13, castle2()],
+            [Road02, forest, forest, forest, Road02, forest, forest, forest, Road02],
+            [mine1(), Road13, Road13, Road13, Road013, Road13, Road13, Road13, mine2()],
         ]
 
         m.field_map = reverse(field)

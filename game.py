@@ -4,19 +4,20 @@ from pygame.locals import *
 from logic.drawer.map_drawer import MapDrawer
 from logic.game_state import GameState, MakeIncome
 from logic.maps.simple_map import SimpleMap
-from logic.player import Player
+from logic.player import Player, PlayerName
 from logic.strategist import MyStrategist
 
 # Инициализация Pygame
 pygame.init()
 
 # Размер экрана
-screen_width = 1000
+screen_width = 900
 screen_height = 500
 
-player_1 = Player()
-player_2 = Player()
-game_map = SimpleMap.create(player_1, player_2)
+player_1 = Player(PlayerName.RED)
+player_2 = Player(PlayerName.BLUE)
+bot = Player(PlayerName.GRAY)
+game_map = SimpleMap.create(player_1, player_2, bot)
 
 map_width = game_map.size_x
 map_height = game_map.size_y

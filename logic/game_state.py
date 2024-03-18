@@ -48,6 +48,13 @@ class GameState:
             self.refresh()
 
     def end_day(self):
+        for player in self.players:
+            armies = self.game_map.get_armies(player)
+            castles = self.game_map.get_castles(player)
+
+            if not armies and not castles:
+                self.stop()
+
         self.day += 1
 
     def stop(self):
