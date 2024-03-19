@@ -3,7 +3,7 @@ from pygame.locals import *
 
 from logic.drawer.map_drawer import MapDrawer
 from logic.game_state import GameState, MakeIncome
-from logic.maps.simple_map import SimpleMap
+from logic.maps.simple_map import Map1
 from logic.player import Player, PlayerName
 from logic.strategist import MyStrategist
 
@@ -17,7 +17,7 @@ screen_height = 500
 player_1 = Player(PlayerName.RED)
 player_2 = Player(PlayerName.BLUE)
 bot = Player(PlayerName.GRAY)
-game_map = SimpleMap.create(player_1, player_2, bot)
+game_map = Map1.create(player_1, player_2, bot)
 
 map_width = game_map.size_x
 map_height = game_map.size_y

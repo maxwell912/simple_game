@@ -1,10 +1,9 @@
-from logic.game_objects.game_object import MovableGameObject, HasPlayer
+from logic.game_objects.game_object import HasPlayer, GameObject
 from logic.player import Player
 
 
-class Army(MovableGameObject, HasPlayer):
-    def __init__(self, player: Player, size: int, x: int, y: int):
-        MovableGameObject.__init__(self, x, y)
+class Army(GameObject, HasPlayer):
+    def __init__(self, player: Player, size: int):
         HasPlayer.__init__(self, player)
         self.size = size
 

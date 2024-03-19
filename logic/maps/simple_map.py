@@ -1,4 +1,5 @@
 from logic.game_map import GameMap
+from logic.game_objects.army import Army
 from logic.game_objects.castle import Castle
 from logic.game_objects.forest import forest
 from logic.game_objects.mine import Mine
@@ -14,12 +15,10 @@ def reverse(field):
             c.append(field[y][x])
     return r
 
-class SimpleMap:
+class Map1:
     def create(player1: Player, player2: Player, bot: Player):
         m = GameMap(9, 5)
 
-        mine1 = lambda: Mine(10, player1)
-        mine2 = lambda: Mine(10, player2)
         bot_mine = lambda: Mine(10, bot)
 
         castle1 = lambda: Castle(player1, 10, 50)

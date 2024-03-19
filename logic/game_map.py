@@ -42,13 +42,13 @@ class GameMap:
         if size > 0 and player.gold >= castle.unit_cost * size:
             player.gold -= castle.unit_cost * size
             x, y = self.get_coords(castle)
-            army = Army(player, size, x, y)
+            army = Army(player, size)
             self.set_object(x, y, army)
 
     def move_army(self, army: Army, direction: Direction):
         x, y = self.get_coords(army)
         new_x, new_y = x + direction.value[0], y + direction.value[1]
-        if new_x >= self.size_x or new_y >= self.size_y:
+        if 0 > new_x or new_x >= self.size_x or 0 > new_y or new_y >= self.size_y:
             return
         field = self.field_map[new_x][new_y]
         if isinstance(field, Location):
@@ -86,10 +86,9 @@ class GameMap:
             raise RuntimeError('Заспавнилось что то кроме армии')
 
     def move(self, obj: GameObject, new_x: int, new_y: int):
-        self.army_map[obj.x][obj.y] = None
+        x, y = self.get_coords(obj)
+        self.army_map[x][y] = None
         self.army_map[new_x][new_y] = obj
-        obj.x = new_x
-        obj.y = new_y
 
     def clear(self, x: int, y: int):
         self.army_map[x][y] = None

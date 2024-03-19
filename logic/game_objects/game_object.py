@@ -28,8 +28,3 @@ class WithIncome(HasPlayer):
 
     def get_income(self):
         self.player.gold += self.income
-
-class MovableGameObject(GameObject):
-    def __init__(self, x: int, y: int):
-        self.x = x
-        self.y = y
