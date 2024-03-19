@@ -26,11 +26,11 @@ class SimpleMap:
         castle2 = lambda: Castle(player2, 10, 50)
 
         field = [
-            [mine1(), Road13, Road13, Road13, Road123, Road13, Road13, Road13, mine2()],
+            [Road12, Road13, Road13, Road13, bot_mine(), Road13, Road13, Road13,  Road23],
             [Road02, forest, forest, forest, Road02, forest, forest, forest, Road02],
             [castle1(), Road13, Road13, Road13, bot_mine(), Road13, Road13, Road13, castle2()],
             [Road02, forest, forest, forest, Road02, forest, forest, forest, Road02],
-            [mine1(), Road13, Road13, Road13, Road013, Road13, Road13, Road13, mine2()],
+            [Road01, Road13, Road13, Road13, bot_mine(), Road13, Road13, Road13, Road03],
         ]
 
         m.field_map = reverse(field)
